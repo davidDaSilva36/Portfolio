@@ -1,0 +1,643 @@
+{
+	"info": {
+		"_postman_id": "ef48d9b9-d47d-478f-b28c-29ca406514c0",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31356647"
+	},
+	"item": [
+		{
+			"name": "Users requests",
+			"item": [
+				{
+					"name": "USER Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Newuser\",\r\n    \"password\": \"Newuser1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "USER Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Newuser\",\r\n    \"password\": \"Newuser1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllUsers with admin",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UyODFiNjJhODE2MWU4YzYwYzkiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMTg3OTAzLCJleHAiOjE3MDExOTUxMDN9.iMxwprUxA6-B3Ft1-AlWbydHtsdre2b9PmHgpNLYYPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/getallusers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"getallusers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllUsers without admin",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY2MTEyODM1NzBiM2FmMGNlOGE1Y2YiLCJ1c2VybmFtZSI6InVzZXIzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDExODc5NDYsImV4cCI6MTcwMTE5NTE0Nn0.dpBnlpSK-__BAbfzi1JyXPA8sUzUdRk_6yKblhOwrZ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/getallusers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"getallusers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserById with admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UyODFiNjJhODE2MWU4YzYwYzkiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMTg3OTAzLCJleHAiOjE3MDExOTUxMDN9.iMxwprUxA6-B3Ft1-AlWbydHtsdre2b9PmHgpNLYYPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/getuserbyid/6564ce391b62a8161e8c60cc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"getuserbyid",
+								"6564ce391b62a8161e8c60cc"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "6564ce391b62a8161e8c60cc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserById without admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY2MTEyODM1NzBiM2FmMGNlOGE1Y2YiLCJ1c2VybmFtZSI6InVzZXIzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDExODc5NDYsImV4cCI6MTcwMTE5NTE0Nn0.dpBnlpSK-__BAbfzi1JyXPA8sUzUdRk_6yKblhOwrZ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/getuserbyid/6564ce391b62a8161e8c60cc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"getuserbyid",
+								"6564ce391b62a8161e8c60cc"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "6564ce391b62a8161e8c60cc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User with admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UyODFiNjJhODE2MWU4YzYwYzkiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMTg3OTAzLCJleHAiOjE3MDExOTUxMDN9.iMxwprUxA6-B3Ft1-AlWbydHtsdre2b9PmHgpNLYYPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user1update\",\r\n    \"password\": \"user1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/updateuserbyid/6564ce391b62a8161e8c60cc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"updateuserbyid",
+								"6564ce391b62a8161e8c60cc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User without admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY2MTEyODM1NzBiM2FmMGNlOGE1Y2YiLCJ1c2VybmFtZSI6InVzZXIzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDExODc5NDYsImV4cCI6MTcwMTE5NTE0Nn0.dpBnlpSK-__BAbfzi1JyXPA8sUzUdRk_6yKblhOwrZ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user2\",\r\n    \"password\": \"user1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/updateuserbyid/6564ce391b62a8161e8c60cc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"updateuserbyid",
+								"6564ce391b62a8161e8c60cc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User with admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UyODFiNjJhODE2MWU4YzYwYzkiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMTI2Mzg2LCJleHAiOjE3MDExMzM1ODZ9.fSWQyXR_juHS7QvZ232ssPC_oMYovfQfEGWFfWWn9ZA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/deleteuser/6564ce391b62a8161e8c60cc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"deleteuser",
+								"6564ce391b62a8161e8c60cc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User without admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UzOTFiNjJhODE2MWU4YzYwY2MiLCJ1c2VybmFtZSI6InVzZXIxIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDExMzMzMzgsImV4cCI6MTcwMTE0MDUzOH0.hTbTssus6eJlletyUdDOPaJ888rfc57PabwbDa-4YYU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/users/deleteuser/6564ce391b62a8161e8c60cc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"deleteuser",
+								"6564ce391b62a8161e8c60cc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products requests",
+			"item": [
+				{
+					"name": "Create Product with admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UyODFiNjJhODE2MWU4YzYwYzkiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMTg3OTAzLCJleHAiOjE3MDExOTUxMDN9.iMxwprUxA6-B3Ft1-AlWbydHtsdre2b9PmHgpNLYYPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \" gamer computer\",\r\n    \"category\": \"computer\",\r\n    \"price\": 1299.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/products/createproduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"createproduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product without admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UzOTFiNjJhODE2MWU4YzYwY2MiLCJ1c2VybmFtZSI6InVzZXIxIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDExMzMzMzgsImV4cCI6MTcwMTE0MDUzOH0.hTbTssus6eJlletyUdDOPaJ888rfc57PabwbDa-4YYU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"gaming screen\",\r\n    \"category\": \"very nice gaming screen\",\r\n    \"price\": 159.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/products/createproduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"createproduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllProducts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UyODFiNjJhODE2MWU4YzYwYzkiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMTI5NzM3LCJleHAiOjE3MDExMzY5Mzd9.hM_dTDH8nQx2leAb6z3y4CCpW1_sYB7_KWDOHaxNiz4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/products/getallproducts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"getallproducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductByID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UyODFiNjJhODE2MWU4YzYwYzkiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMTg3OTAzLCJleHAiOjE3MDExOTUxMDN9.iMxwprUxA6-B3Ft1-AlWbydHtsdre2b9PmHgpNLYYPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/products/getproductbyid/65652c2dc1ebcdc13c9020dd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"getproductbyid",
+								"65652c2dc1ebcdc13c9020dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct with admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UyODFiNjJhODE2MWU4YzYwYzkiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMTI5NzM3LCJleHAiOjE3MDExMzY5Mzd9.hM_dTDH8nQx2leAb6z3y4CCpW1_sYB7_KWDOHaxNiz4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"new keyboard\",\r\n    \"category\": \"new category\",\r\n    \"description\": \"new description\",\r\n    \"price\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/products/updateproduct/65652c2dc1ebcdc13c9020dd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"updateproduct",
+								"65652c2dc1ebcdc13c9020dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct without admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UzOTFiNjJhODE2MWU4YzYwY2MiLCJ1c2VybmFtZSI6InVzZXIxIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDExMzMzMzgsImV4cCI6MTcwMTE0MDUzOH0.hTbTssus6eJlletyUdDOPaJ888rfc57PabwbDa-4YYU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"new keyboard\",\r\n    \"category\": \"new category\",\r\n    \"description\": \"new description\",\r\n    \"price\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/products/updateproduct/65652e3fc1ebcdc13c9020e8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"updateproduct",
+								"65652e3fc1ebcdc13c9020e8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product with admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UyODFiNjJhODE2MWU4YzYwYzkiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMTI5NzM3LCJleHAiOjE3MDExMzY5Mzd9.hM_dTDH8nQx2leAb6z3y4CCpW1_sYB7_KWDOHaxNiz4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/products/deleteproduct/65652c2dc1ebcdc13c9020dd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"deleteproduct",
+								"65652c2dc1ebcdc13c9020dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product without admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY0Y2UzOTFiNjJhODE2MWU4YzYwY2MiLCJ1c2VybmFtZSI6InVzZXIxIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3MDExMzMzMzgsImV4cCI6MTcwMTE0MDUzOH0.hTbTssus6eJlletyUdDOPaJ888rfc57PabwbDa-4YYU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/products/deleteproduct/65652c2dc1ebcdc13c9020dd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"deleteproduct",
+								"65652c2dc1ebcdc13c9020dd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

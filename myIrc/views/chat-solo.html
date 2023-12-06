@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat en direct</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+      #chat-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+      }
+      #chat-messages {
+        height: 300px;
+        overflow-y: scroll;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      #user-input {
+        display: flex;
+      }
+      #message-input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      #send-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <body>
+    <div id="chat-container">
+      <h1>Chat en direct</h1>
+      <div id="chat-messages">
+        <!-- Les messages s'afficheront ici -->
+      </div>
+      <div id="user-input">
+        <form id="form" action="">
+          <input type="text" id="message-input" placeholder="Saisissez votre message" />
+          <button id="send-button" type="submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+
+      var messages = document.getElementById('chat-messages');
+      var form = document.getElementById('form');
+      var messageInput = document.getElementById('message-input');
+      var urlParams = new URLSearchParams(window.location.search);
+      var recipientUserId = urlParams.get('userId'); // Assuming 'userId' is the parameter name
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (messageInput.value) {
+          socket.emit('privateMessage', { to: recipientUserId, message: messageInput.value });
+          //socket.emit('privateMessage', messageInput.value);
+          messageInput.value = '';
+        }
+      });
+
+      socket.on('privateMessage', function(msg) {
+        var item = document.createElement('p'); // Utilisez un paragraphe au lieu de li
+        item.textContent =  msg.username +" : " +msg.message ;
+        messages.appendChild(item);
+        messages.scrollTop = messages.scrollHeight;
+      });
+    </script>
+  </body>
+</html>

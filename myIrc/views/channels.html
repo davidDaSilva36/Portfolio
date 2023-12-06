@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Channels</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<body>
+    <h1>Welcome, <span id="usernamePlaceholder"></span>!</h1>
+    <h2>Create a Channel</h2>
+    <form action="/createChannel" method="post">
+        <label for="channelName">Channel Name:</label>
+        <input type="text" class="form-control" id="channelName" name="channelName" required>
+        <label for="visibility">Channel Visibility:</label>
+        <select class="form-select form-select-sm" id="visibility" name="visibility">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+        </select>
+        <!-- Add a section for adding users to a private channel -->
+        <div id="addUsersSection" style="display: none;">
+            <h3>Add Users to the Channel</h3>
+            <ul id="userChecklist" class="list-group list-group-flush">
+                <!-- Users will be inserted here from JavaScript as radio buttons for private channels -->
+            </ul>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Channel</button>
+    </form>
+    <h1>Users List</h1>
+    <ul id="userList">
+        <!-- Users will be inserted here from JavaScript as selectable options for creating channels -->
+    </ul>
+    <h2>Channels List</h2>
+    <ul id="channelList">
+        <!-- Channels will be inserted here from JavaScript -->
+    </ul>
+
+
+    <script>
+        // JavaScript to fetch and display channels
+        fetch('/getChannels')
+            .then(response => response.json())
+            .then(data => {
+                const channelList = document.getElementById('channelList');
+                data.channels.forEach(channel => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `/joinChannel/${channel.id}`; // Link to enter the chat of the specific channel
+                    a.textContent = channel.name;
+                    li.appendChild(a);
+                    channelList.appendChild(li);
+                });
+
+                // Access the user's data and update the placeholder
+                const usernamePlaceholder = document.getElementById('usernamePlaceholder');
+                usernamePlaceholder.textContent = data.user ? data.user.username : 'Guest';
+
+                // Show the "Select Users" section if the channel is private
+                const visibilitySelect = document.getElementById('visibility');
+                const addUsersSection = document.getElementById('addUsersSection');
+                visibilitySelect.addEventListener('change', () => {
+                    if (visibilitySelect.value === 'private') {
+                        addUsersSection.style.display = 'block';
+                    } else {
+                        addUsersSection.style.display = 'none';
+                    }
+                });
+            });
+
+             // JavaScript to fetch and display users
+             fetch('/getUsers')
+            .then(response => response.json())
+            .then(data => {
+                const userChecklist = document.getElementById('userChecklist');
+                const userList = document.getElementById('userList');
+
+                data.users.forEach(user => {
+                    // Create an option for the user to be selected when creating a channel
+                    
+                    // Display the user in the user list
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `/chat-solo?userId=${user.id}`; // Link to start a chat with the user
+                    a.textContent = user.username;
+                    li.appendChild(a);
+                    userList.appendChild(li);
+                    const li2 = document.createElement('li');
+                    const label = document.createElement('label');
+                    label.textContent = user.username;
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.name = 'members[]'; // Use this name for selecting users in an array
+                    checkbox.value = user.id;
+                    label.appendChild(checkbox);
+                    li2.appendChild(label);
+                    userChecklist.appendChild(li2);
+                });
+            });
+            
+    </script>
+    <h2> Change password (admin only) </h2>
+    <form action ="/change" method="post">
+        <button type="submit" class="btn btn-primary">Change password</button>
+    </form>
+</body>
+</html>
