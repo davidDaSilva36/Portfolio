@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "vanilla",
+    "description": "Vanilla",
+    "enabled": false
+  },
+  {
+    "id": 2,
+    "name": "Basic Game Customization",
+    "description": "Basic Game Customization.",
+    "enabled": true
+  }
+]
